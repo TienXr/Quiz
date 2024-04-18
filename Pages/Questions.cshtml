@@ -1,0 +1,45 @@
+﻿@page
+@model Quiz.Pages.QuestionsModel
+@{
+    ViewData["Title"] = "Quizes";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<form method="post">
+    <div class="form-group mt-2">
+        <label asp-for="Question.Question" class="control-label"></label>
+        <input asp-for="Question.Question" class="form-control" />
+        <span asp-validation-for="Question.Question" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Question.FirstChoice" class="control-label"></label>
+        <input asp-for="Question.FirstChoice" class="form-control" />
+        <span asp-validation-for="Question.FirstChoice" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Question.SecondChoice" class="control-label"></label>
+        <input asp-for="Question.SecondChoice" class="form-control" />
+        <span asp-validation-for="Question.SecondChoice" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Question.ThirdChoice" class="control-label"></label>
+        <input asp-for="Question.ThirdChoice" class="form-control" />
+        <span asp-validation-for="Question.ThirdChoice" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Question.CorrectAnswer" class="control-label"></label>
+        <select asp-for="Question.CorrectAnswer" class="form-control">
+            <option value="1">First Choice</option>
+            <option value="2">Second Choice</option>
+            <option value="3">Third Choice</option>
+        </select>
+        <span asp-validation-for="Question.CorrectAnswer" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Question.QuizId" class="control-label"></label>
+        <input asp-for="Question.QuizId" class="form-control" />
+        <span asp-validation-for="Question.QuizId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+</form>

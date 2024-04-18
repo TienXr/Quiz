@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Home Page</h1>
+    <p>This is quiz home page. You can create questions for each quiz and try to do it.</p>
+    <div class="container text-center" style="margin-top: 100px">
+        <div class="row justify-content-evenly">
+            <button class="col-3 bg-warning rounded-3 d-flex justify-content-center align-items-center fs-2" style="height: 100px">
+                <a asp-page="/Quizes">Quiz</a>
+            </button>
+            <button class="col-3 bg-warning rounded-3 d-flex justify-content-center align-items-center fs-2" style="height: 100px">
+                <a asp-page="/Questions">Add Questions</a>
+            </button>
+        </div>
+    </div>
+</div>
