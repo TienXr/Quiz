@@ -19,14 +19,14 @@ namespace Quiz.Services
 
         public List<Questions> GetAll() => _context.Question.ToList();
 
-        public Questions GetById(int id)
-        {
-            return _context.Question.FirstOrDefault(q => q.Id == id);
-        }
-
         public List<Questions> GetQuestionsByQuiz(int quizId)
         {
             return [.. _context.Question.Where(q => q.QuizId == quizId)];
+        }
+
+        public List<int> GetAllQuizId()
+        {
+            return [.. _context.Question.Select(q => q.QuizId).Distinct()];
         }
     }
 }

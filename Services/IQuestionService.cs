@@ -9,8 +9,8 @@ namespace Quiz.Services
 
         List<Questions> GetQuestionsByQuiz(int quizId);
 
-        Questions GetById(int id);
-
         void Add(Questions question);
+
+        List<int> GetAllQuizId();
     }
 }

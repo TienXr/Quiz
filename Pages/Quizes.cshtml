@@ -5,3 +5,48 @@
 }
 
 <h3>@ViewData["Title"]</h3>
+
+
+<form id="quizForm" method="post">
+    <select id="quizes">
+        <option value="">Select Quiz</option>
+        @foreach (var quizId in Model.QuizNum)
+        {
+            <option value="@quizId">@quizId</option>
+        }
+    </select>
+    <div id="questions"></div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+</form>
+
+<script>
+    document.getElementById("quizes").addEventListener("change", function () {
+        let selectedQuiz = this.value;
+        if (selectedQuiz) {
+            fetch('/Quizes?handler=GetQuestions&quizId=' + selectedQuiz)
+                .then(response => response.json())
+                .then(data => {
+                    displayContent(data);
+                });
+        }
+    });
+
+    function displayContent(data) {
+        let container = document.getElementById("questions");
+        container.innerHTML = "";
+        data.forEach(q => {
+            let questionContent = `
+                <div>
+                    <input type="hidden" name="${q.id}-correctAnswer" value="${q.correctAnswer}">
+                    <p>${q.question}</p>
+                        <ul>
+                            <li><input type="radio" name="choice-${q.id}" value="1">${q.firstChoice}</li>
+                            <li><input type="radio" name="choice-${q.id}" value="2">${q.secondChoice}</li>
+                            <li><input type="radio" name="choice-${q.id}" value="3">${q.thirdChoice}</li>
+                        </ul>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', questionContent);
+        })
+    }
+</script>
